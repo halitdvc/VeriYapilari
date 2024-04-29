@@ -106,4 +106,16 @@ public class List {
 
         return yeniListe;
     }
+
+    // Ardışık yinelenen düğümleri silme metodu
+    public void silYinelenenDugumler() {
+        Eleman gecici = bas;
+        while (gecici != null && gecici.sonraki != null) {
+            if (gecici.veri == gecici.sonraki.veri) {
+                gecici.sonraki = gecici.sonraki.sonraki;
+            } else {
+                gecici = gecici.sonraki;
+            }
+        }
+    }
 }
