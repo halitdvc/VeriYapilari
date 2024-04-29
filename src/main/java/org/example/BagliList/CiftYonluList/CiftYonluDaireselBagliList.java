@@ -1,6 +1,6 @@
 package org.example.BagliList.CiftYonluList;
 
-public class DaireselBagliList {
+public class CiftYonluDaireselBagliList {
     private Eleman bas, son;
 
     class Eleman {
