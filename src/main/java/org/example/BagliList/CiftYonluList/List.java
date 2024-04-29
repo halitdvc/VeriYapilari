@@ -97,4 +97,61 @@ public class List {
     private boolean bosMu() {
         return bas == null;
     }
+    public static List birlestir(List liste1, List liste2) {
+        List yeniListe = new List();
+        Eleman ptr1 = liste1.bas;
+        Eleman ptr2 = liste2.bas;
+
+        while (ptr1 != null && ptr2 != null) {
+            if (ptr1.veri < ptr2.veri) {
+                yeniListe.sonaEkle(ptr1.veri);
+                ptr1 = ptr1.sonraki;
+            } else {
+                yeniListe.sonaEkle(ptr2.veri);
+                ptr2 = ptr2.sonraki;
+            }
+        }
+
+        while (ptr1 != null) {
+            yeniListe.sonaEkle(ptr1.veri);
+            ptr1 = ptr1.sonraki;
+        }
+
+        while (ptr2 != null) {
+            yeniListe.sonaEkle(ptr2.veri);
+            ptr2 = ptr2.sonraki;
+        }
+
+        return yeniListe;
+    }
+
+
+    public Eleman donguTespit() {
+        Eleman yavasIsaretci = this.bas;
+        Eleman hizliIsaretci = this.bas;
+
+        // Bulusma noktasini belirle
+        while (hizliIsaretci != null && hizliIsaretci.sonraki != null) {
+            yavasIsaretci = yavasIsaretci.sonraki;
+            hizliIsaretci = hizliIsaretci.sonraki.sonraki;
+
+            if (yavasIsaretci == hizliIsaretci) {
+                break;
+            }
+        }
+
+        // Döngü yoksa null dondur.
+        if (hizliIsaretci == null || hizliIsaretci.sonraki == null) {
+            return null;
+        }
+
+        // Döngünün baslangic noktasini bul
+        yavasIsaretci = this.bas;
+        while (yavasIsaretci != hizliIsaretci) {
+            yavasIsaretci = yavasIsaretci.sonraki;
+            hizliIsaretci = hizliIsaretci.sonraki;
+        }
+
+        return yavasIsaretci;
+    }
 }

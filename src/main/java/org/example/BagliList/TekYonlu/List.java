@@ -78,4 +78,32 @@ public class List {
     private boolean bosMu() {
         return bas == null;
     }
+
+    public static List birlestir(List liste1, List liste2) {
+        List yeniListe = new List();
+        Eleman ptr1 = liste1.bas;
+        Eleman ptr2 = liste2.bas;
+
+        while (ptr1 != null && ptr2 != null) {
+            if (ptr1.veri < ptr2.veri) {
+                yeniListe.sonaEkle(ptr1.veri);
+                ptr1 = ptr1.sonraki;
+            } else {
+                yeniListe.sonaEkle(ptr2.veri);
+                ptr2 = ptr2.sonraki;
+            }
+        }
+
+        while (ptr1 != null) {
+            yeniListe.sonaEkle(ptr1.veri);
+            ptr1 = ptr1.sonraki;
+        }
+
+        while (ptr2 != null) {
+            yeniListe.sonaEkle(ptr2.veri);
+            ptr2 = ptr2.sonraki;
+        }
+
+        return yeniListe;
+    }
 }
